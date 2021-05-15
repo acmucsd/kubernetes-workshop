@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acmhack-deployment
+spec:
+  selector:
+    matchLabels:
+      app: acmhack
+  replicas: 5 # tells deployment to run 5 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: acmhack
+    spec:
+      containers:
+      - name: acmhackapi
+        image: numberonetruong/node-web-app
+        ports:
+        - containerPort: 3000
